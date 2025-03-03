@@ -215,3 +215,22 @@ pub struct UserRegistration {
     pub created_at: DateTime<Utc>,
     pub completed_at: Option<DateTime<Utc>>,
 }
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct UserPasskey {
+    pub id: Ulid,
+    pub user_id: Ulid,
+    pub name: String,
+    pub data: serde_json::Value,
+    pub last_used_at: Option<DateTime<Utc>>,
+    pub created_at: DateTime<Utc>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct UserPasskeyChallenge {
+    pub id: Ulid,
+    pub user_session_id: Option<Ulid>,
+    pub state: serde_json::Value,
+    pub created_at: DateTime<Utc>,
+    pub completed_at: Option<DateTime<Utc>>,
+}
