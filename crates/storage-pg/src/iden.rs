@@ -135,3 +135,15 @@ pub enum UpstreamOAuthLinks {
     HumanAccountName,
     CreatedAt,
 }
+
+#[derive(sea_query::Iden)]
+pub enum UserPasskeys {
+    Table,
+    UserPasskeyId,
+    UserId,
+    CredentialId,
+    Name,
+    Data,
+    LastUsedAt,
+    CreatedAt,
+}
