@@ -1596,6 +1596,10 @@ type SiteConfig implements Node {
   """
   minimumPasswordComplexity: Int!
   """
+  Whether passkeys are enabled
+  """
+  passkeysEnabled: Boolean!
+  """
   The ID of the site configuration.
   """
   id: ID!

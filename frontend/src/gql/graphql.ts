@@ -1170,6 +1170,8 @@ export type SiteConfig = Node & {
    * in use is <https://crates.io/crates/zxcvbn>.
    */
   minimumPasswordComplexity: Scalars['Int']['output'];
+  /** Whether passkeys are enabled */
+  passkeysEnabled: Scalars['Boolean']['output'];
   /** Whether passwords are enabled and users can change their own passwords. */
   passwordChangeAllowed: Scalars['Boolean']['output'];
   /** Whether passwords are enabled for login. */
@@ -1690,7 +1692,7 @@ export type UserProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type UserProfileQuery = { __typename?: 'Query', viewerSession: { __typename: 'Anonymous' } | { __typename: 'BrowserSession', id: string, user: { __typename?: 'User', hasPassword: boolean, emails: { __typename?: 'UserEmailConnection', totalCount: number } } } | { __typename: 'Oauth2Session' }, siteConfig: (
-    { __typename?: 'SiteConfig', emailChangeAllowed: boolean, passwordLoginEnabled: boolean }
+    { __typename?: 'SiteConfig', emailChangeAllowed: boolean, passwordLoginEnabled: boolean, passkeysEnabled: boolean }
     & { ' $fragmentRefs'?: { 'UserEmailList_SiteConfigFragment': UserEmailList_SiteConfigFragment;'UserEmail_SiteConfigFragment': UserEmail_SiteConfigFragment;'PasswordChange_SiteConfigFragment': PasswordChange_SiteConfigFragment } }
   ) };
 
@@ -2314,6 +2316,7 @@ export const UserProfileDocument = new TypedDocumentString(`
   siteConfig {
     emailChangeAllowed
     passwordLoginEnabled
+    passkeysEnabled
     ...UserEmailList_siteConfig
     ...UserEmail_siteConfig
     ...PasswordChange_siteConfig
